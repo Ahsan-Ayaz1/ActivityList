@@ -30,7 +30,7 @@ const handleDeleteActivity = (index) => {
             <p>{{ activity?.activityName }}</p>
           </div>
           <div class="mt-2">
-            <p class="text-xs text-gray-400">Status</p>
+            <p class="text-xs text-gray-400">Activity Status</p>
             <label class="inline-flex mt-2 items-center cursor-pointer">
               <input
                 type="checkbox"

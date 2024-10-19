@@ -15,12 +15,15 @@ const closeModal = () => {
   isEdit.value = false;
   activityDetails.value = {};
 };
+
 const openActivityModal = () => {
   isModalOpen.value = true;
 };
+
 const saveToLocalStorage = () => {
   localStorage.setItem("activities", JSON.stringify(activityData.value));
 };
+
 const manageActivity = () => {
   if (!isEdit.value) {
     activityData.value.push(activityDetails.value);
@@ -34,6 +37,7 @@ const manageActivity = () => {
     activityDetails.value = {};
   }
 };
+
 const editActivity = (index) => {
   isEdit.value = true;
   isModalOpen.value = true;
@@ -41,7 +45,7 @@ const editActivity = (index) => {
   activityIndex.value = index;
 };
 
-// Conputed Property To Disable Button if ActivityName is Empty
+// Computed Property To Disable Button if ActivityName is Empty
 const isSaveDisabled = computed(() => !activityDetails.value.activityName?.trim());
 
 // Watch ActivityData Variable For Change If Happens Update in LocalStorage
@@ -57,16 +61,19 @@ onMounted(() => {
 </script>
 
 <template>
-  <div>
+  <div class="flex flex-col min-h-screen">
+    <!-- Flex container to fill the screen -->
     <BaseHeader @openAddActivityModal="openActivityModal" />
-    <div class="mt-10 px-8">
-      <div v-if="activityData?.length">
-        <h1 class="text-2xl font-medium">Activity List</h1>
+    <div class="mt-10 px-8 flex-grow">
+      <!-- Main content area -->
+      <div>
+        <h1 class="text-2xl font-medium">
+          {{
+            activityData?.length ? "Activity List" : "Add and Manage Activities Here. 😊"
+          }}
+        </h1>
       </div>
-      <div v-else>
-        <h1 class="text-2xl font-medium">Add Activity to Manage Here 😊</h1>
-      </div>
-      <div class="">
+      <div>
         <ActivityCard
           v-model:activityData="activityData"
           :is-edit="isEdit"
@@ -80,7 +87,6 @@ onMounted(() => {
       :is-visible="isModalOpen"
       @close="closeModal"
     >
-      <!-- Body Content -->
       <div class="flex flex-col">
         <label for="activityName" class="text-sm mb-1">Activity Name</label>
         <input
@@ -102,7 +108,6 @@ onMounted(() => {
           <option value="false">Not Completed</option>
         </select>
       </div>
-      <!-- Footer Buttons -->
       <template #footer>
         <div class="p-4 items-center flex gap-4">
           <button
@@ -121,5 +126,10 @@ onMounted(() => {
         </div>
       </template>
     </BaseModal>
+    <footer class="border-t mt-4 text-center p-4">
+      <p class="flex items-center justify-center gap-4">
+        <img src="/src/assets/logo.svg" class="w-10" alt="Logo" /> All rights reserved.
+      </p>
+    </footer>
   </div>
 </template>
