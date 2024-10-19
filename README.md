@@ -1,5 +1,26 @@
-# Vue 3 + Vite
+# Activity List
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+A Vue 3 project that allows users to manage and display their activities using a modern, responsive interface.
 
-Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
+## Node Version
+
+This project requires Node.js version **16.x** or higher. You can check your Node.js version with the following command:
+
+````bash
+node -v
+
+## Installation
+
+To get started with this project, clone the repository and install the dependencies:
+
+```bash
+git clone <repository-url>
+cd activitylist
+npm install
+````
+
+### Customization
+
+- **Repository URL**: Replace `<repository-url>` with the actual URL of your repository.
+
+Feel free to modify any sections or add additional details specific to your project!
