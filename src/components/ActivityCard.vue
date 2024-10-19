@@ -48,13 +48,13 @@ const handleDeleteActivity = (index) => {
         <div class="flex gap-4">
           <img
             src="/src/assets/edit-gray.svg"
-            class="cursor-pointer"
+            class="cursor-pointer transition-all hover:scale-105 focus:scale-105 active:scale-95 active:bg-opacity-80"
             alt="Edit Icon"
             @click="handleEditActivity(index)"
           />
           <img
             src="/src/assets/delete-gray.svg"
-            class="cursor-pointer"
+            class="cursor-pointer transition-all hover:scale-105 focus:scale-105 active:scale-95 active:bg-opacity-80"
             alt="Delete Icon"
             @click="handleDeleteActivity(index)"
           />

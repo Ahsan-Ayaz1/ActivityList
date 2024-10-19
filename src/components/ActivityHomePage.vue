@@ -9,8 +9,10 @@ const activityData = ref([]);
 const activityDetails = ref({});
 const activityIndex = ref(null);
 const isEdit = ref(false);
+
 const closeModal = () => {
   isModalOpen.value = false;
+  isEdit.value = false;
   activityDetails.value = {};
 };
 const openActivityModal = () => {
@@ -35,14 +37,17 @@ const manageActivity = () => {
 const editActivity = (index) => {
   isEdit.value = true;
   isModalOpen.value = true;
-  activityDetails.value = activityData.value[index];
+  activityDetails.value = { ...activityData.value[index] };
   activityIndex.value = index;
 };
+
 // Conputed Property To Disable Button if ActivityName is Empty
 const isSaveDisabled = computed(() => !activityDetails.value.activityName?.trim());
 
+// Watch ActivityData Variable For Change If Happens Update in LocalStorage
 watch(activityData, saveToLocalStorage, { deep: true });
 
+// Check For Activities if there show to user as User Reload the page
 onMounted(() => {
   const storedActivities = localStorage.getItem("activities");
   if (storedActivities) {
@@ -57,6 +62,9 @@ onMounted(() => {
     <div class="mt-10 px-8">
       <div v-if="activityData?.length">
         <h1 class="text-2xl font-medium">Activity List</h1>
+      </div>
+      <div v-else>
+        <h1 class="text-2xl font-medium">Add Activity to Manage Here 😊</h1>
       </div>
       <div class="">
         <ActivityCard
@@ -100,12 +108,12 @@ onMounted(() => {
           <button
             @click="manageActivity"
             :disabled="isSaveDisabled"
-            class="text-sm whitespace-nowrap cursor-pointer rounded p-2 bg-[#FF5858] text-white flex items-center gap-2 px-4 py-2 transition-all hover:scale-105 hover:bg-opacity-70 focus:scale-105 active:scale-95 active:bg-opacity-80 disabled:pointer-events-none disabled:opacity-40"
+            class="text-sm whitespace-nowrap outline-none cursor-pointer rounded p-2 bg-[#FF5858] text-white flex items-center gap-2 px-4 py-2 transition-all hover:scale-105 hover:bg-opacity-70 focus:scale-105 active:scale-95 active:bg-opacity-80 disabled:pointer-events-none disabled:opacity-40"
           >
             {{ isEdit ? "Update Activity" : "Add Activity" }}
           </button>
           <button
-            class="text-sm whitespace-nowrap cursor-pointer rounded p-2 border text-gray-500 flex items-center gap-2 px-4 py-2 transition-all hover:scale-105 hover:bg-opacity-70 focus:scale-105 active:scale-95 active:bg-opacity-80 disabled:pointer-events-none disabled:opacity-40"
+            class="text-sm whitespace-nowrap cursor-pointer outline-none rounded p-2 border text-gray-500 flex items-center gap-2 px-4 py-2 transition-all hover:scale-105 hover:bg-opacity-70 focus:scale-105 active:scale-95 active:bg-opacity-80 disabled:pointer-events-none disabled:opacity-40"
             @click="closeModal"
           >
             Cancel

@@ -7,7 +7,9 @@ const openModal = () => {
 
 <template>
   <div class="border flex justify-between items-center py-4 px-8">
-    <div class="">ACTIVITY</div>
+    <div class="">
+      <img src="/src/assets/logo.svg" class="w-10" alt="" />
+    </div>
     <div>
       <span
         @click="openModal"
