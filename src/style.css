@@ -1,22 +1,3 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-
-.slide-from-right-enter-active,
-.slide-from-right-leave-active {
-  transition: transform 0.7s ease, opacity 0.5s ease;
-  opacity: 1; /* Start with full opacity */
-}
-
-.slide-from-right-enter,
-.slide-from-right-leave-to {
-  transform: translateX(100%); /* Start offscreen to the right */
-  opacity: 0; /* Start with no opacity */
-}
-
-.slide-from-right-enter-to,
-.slide-from-right-leave {
-  transform: translateX(0%); /* Slide in to the left */
-  opacity: 1; /* End with full opacity */
-}
