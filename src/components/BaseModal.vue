@@ -15,12 +15,12 @@
                 {{ description }}
               </p>
             </div>
-            <!-- <img
+            <img
               class="cursor-pointer"
               @click="closeModal"
-              src="/Icons/cross-icon.svg"
+              src="/src/assets/cross-icon.svg"
               alt="cross"
-            /> -->
+            />
           </div>
           <hr />
         </template>
@@ -40,9 +40,6 @@
 </template>
 
 <script setup>
-import { defineProps, defineEmits } from "vue";
-
-// Props definition
 defineProps({
   isVisible: {
     type: Boolean,
